@@ -5,11 +5,19 @@ unzip -o -qq  pb.zip -d pb
 mkdir -p /var/app
 cp -R /root/pb /var/app
 
-echo "Domain: $D"
-echo "Email: $E"
+while getopts ":d:e:" opt; do
+      case $opt in
+        d ) DOMAIN="$OPTARG";;
+        e ) EMAIL="$OPTARG";;
+        \?) echo "Invalid option: -"$OPTARG"" >&2
+            exit 1;;
+        : ) echo "Option -"$OPTARG" requires an argument." >&2
+            exit 1;;
+      esac
+done
 
-certbot certonly --standalone -n -d $D --staple-ocsp -m $E --agree-tos 
-/root/pb/pocketbase serve --http=$domain:80 --https=$domain:443
+certbot certonly --standalone -n -d $DOMAIN --staple-ocsp -m $EMAIL --agree-tos 
+/root/pb/pocketbase serve --http=$DOMAIN:80 --https=$DOMAIN:443
 
 certbot renew -n
 echo "45       2       *       *       6       certbot renew" | crontab -e" 
