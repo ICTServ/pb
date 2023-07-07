@@ -12,8 +12,6 @@ do
         e) email=${OPTARG};;
     esac
 done
-echo "Domain: $domain";
-echo "Email: $email";
 
 certbot certonly --standalone -n -d $domain --staple-ocsp -m $email --agree-tos 
 /root/pb/pocketbase serve --http=$domain:80 --https=$domain:443
