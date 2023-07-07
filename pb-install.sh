@@ -5,15 +5,10 @@ unzip -o -qq  pb.zip -d pb
 mkdir -p /var/app
 cp -R /root/pb /var/app
 
-while getopts d:e: flag
-do
-    case "${flag}" in
-        d) domain=${OPTARG};;
-        e) email=${OPTARG};;
-    esac
-done
+echo "Domain: $D"
+echo "Email: $E"
 
-certbot certonly --standalone -n -d $domain --staple-ocsp -m $email --agree-tos 
+certbot certonly --standalone -n -d $D --staple-ocsp -m $E --agree-tos 
 /root/pb/pocketbase serve --http=$domain:80 --https=$domain:443
 
 certbot renew -n
