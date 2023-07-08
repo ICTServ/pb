@@ -1,14 +1,15 @@
 #!/bin/bash
 apk add certbot && apk add curl && apk add zip  \ 
-wget -O pb.zip `$(curl -s "https://api.github.com/repos/pocketbase/pocketbase/releases/assets/115395053" |  grep '"browser_download_url":' | sed -E 's/.*"([^"]+)".*/\1/')`   \
+$PBURL = curl -s "https://api.github.com/repos/pocketbase/pocketbase/releases/assets/115395053" |  grep '"browser_download_url":' | sed -E 's/.*"([^"]+)".*/\1/'    \
+curl $PBURL --output pb.zip  \
 unzip -o -qq  pb.zip -d pb   \ 
 mkdir -p /var/app  && 
 cp -R /root/pb /var/app   \ 
 
 while getopts d:e: opt; do
     case "$opt" in
-        d) domain=${OPTARG};;
-        e) email=${OPTARG};;
+        d) domain=$OPTARG;;
+        e) email=$OPTARG;;
     esac
 done
 
