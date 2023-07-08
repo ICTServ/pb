@@ -8,8 +8,8 @@ cp -R /root/pb /var/app  &&
 while getopts d:e: flag
 do
     case "${flag}" in
-        u) domain=${OPTARG};;
-        e) email=${OPTARG};;
+        D) domain=${OPTARG};;
+        E) email=${OPTARG};;
     esac
 done
 
