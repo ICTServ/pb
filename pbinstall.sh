@@ -13,8 +13,7 @@ unzip -o -qq /tmp/pb.zip -d /var/app  &&
 # /root/pb/pocketbase serve --http=$domain:80 --https=$domain:443  &&
 
 certbot certonly --standalone -n -d cotech.site --staple-ocsp -m email@cotech.site --agree-tos  && 
-/root/pb/pocketbase serve --http=cotech.site:80 --https=cotech.site:443  &&
-
+/var/app/pb/pocketbase serve --http=cotech.site:80 --https=cotech.site:443  &&
 certbot renew &&
 crontab -e &&
 echo `45       2       *       *       6       certbot renew | crontab -e` 
