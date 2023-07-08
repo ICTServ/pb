@@ -1,8 +1,11 @@
 #!/bin/bash
 # apk update && apk add certbot && apk add curl && apk add zip  \ 
-mkdir -p /var/app &&
+mkdir -p /var/app/pb &&
 wget -O /tmp/pb.zip "$(curl -s https://api.github.com/repos/pocketbase/pocketbase/releases/assets/115395053 |  grep '"browser_download_url":' | sed -E 's/.*"([^"]+)".*/\1/')"  &&
-unzip -o -qq /tmp/pb.zip -d /var/app  &&
+cd /tmp  &&
+unzip -o -qq pb.zip &&
+cp pocketbase /var/app/pb &&
+cd  &&
 # while getopts d:e: opt; do
 #     case "$opt" in
 #         d) domain=$OPTARG;;
