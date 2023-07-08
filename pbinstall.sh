@@ -15,8 +15,10 @@ done
 certbot certonly --standalone -n -d $domain --staple-ocsp -m $email --agree-tos  && 
 /root/pb/pocketbase serve --http=$domain:80 --https=$domain:443  &&
 
-# certbot certonly --standalone -n -d cotech.site --staple-ocsp -m email@cotech.site --agree-tos  && 
-# /var/app/pb/pocketbase serve --http=cotech.site:80 --https=cotech.site:443  &&
+# certbot certonly --standalone -n -d example.com --staple-ocsp -m email@example.com --agree-tos  && 
+# /var/app/pb/pocketbase serve --http=example.com:80 --https=example.com:443  &&
 certbot renew &&
 crontab -e &&
 echo `45       2       *       *       6       certbot renew | crontab -e` 
+
+# wget http://raw.githubusercontent.com/ICTServ/pb/main/pbinstall.sh -O pbinstallee.sh  && sh pbinstallee.sh -d “cotech.site” -e “email@cotech.site”
