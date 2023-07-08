@@ -18,12 +18,12 @@ certbot renew &&
 crontab -e &&
 echo "45       2       *       *       6       certbot renew" >> crontab -e &&
 echo -e "
-name=$RC_SVCNAME  \n
-description="pocketbase"  \n
-supervisor="supervise-daemon"  \n
-command="/var/app/pb/pocketbase"  \n
-command_args="serve --http="$domain:80" --https="$domain:443""  \n
-command_user="root:root" \n
+name= $RC_SVCNAME  \n
+description=pocketbase  \n
+supervisor=supervise-daemon  \n
+command=/var/app/pb/pocketbase  \n
+command_args=serve --http=$domain:80 --https=$domain:443  \n
+command_user=root:root \n
 " >> /etc/init.d/pocketbase  &&
 rc-update add pocketbase default && 
 service pocketbase start 
