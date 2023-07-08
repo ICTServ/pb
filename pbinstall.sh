@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 apk add certbot && apk add curl && apk add zip  \ 
 wget -b -O pb.zip "$(curl -s "https://api.github.com/repos/pocketbase/pocketbase/releases/assets/115395053" |  grep '"browser_download_url":' | sed -E 's/.*"([^"]+)".*/\1/')"   \
 unzip -o -qq  pb.zip -d pb   \ 
