@@ -8,11 +8,11 @@ cp -R /root/pb /var/app  &&
 while getopts d:e: flag
 do
     case "${flag}" in
-        D) domain=${OPTARG};;
-        E) email=${OPTARG};;
+        d) dmn=${OPTARG};;
+        e) eml=${OPTARG};;
     esac
 done
 
-certbot certonly --standalone -n -d $domain --staple-ocsp -m $email --agree-tos &&
+certbot certonly --standalone -n -d $dmn --staple-ocsp -m $eml --agree-tos &&
 cd /root/pb/ &&
-./pocketbase serve --http=$domain:80 --https=$domain:443
+./pocketbase serve --http=$dmn:80 --https=$dmn:443
