@@ -14,7 +14,7 @@ do
 done
 
 certbot certonly --standalone -n -d $domain --staple-ocsp -m $email --agree-tos   \ 
-/root/pb/pocketbase serve --http=$domain:80 --https=$email:443  \
+/root/pb/pocketbase serve --http=$domain:80 --https=$domain:443  \
 certbot renew --dry-run // check \
 certbot renew \
 crontab -e \
