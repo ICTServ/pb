@@ -14,9 +14,11 @@ while getopts d:e: opt; do
 done
 certbot certonly --standalone -n -d $domain --staple-ocsp -m $email --agree-tos  && 
 /root/pb/pocketbase serve --http=$domain:80 --https=$domain:443  &&
-certbot renew &&
-crontab -e &&
-echo "45       2       *       *       6       certbot renew | crontab -e" 
+
+
+# certbot renew &&
+# crontab -e &&
+# echo "45       2       *       *       6       certbot renew | crontab -e" 
 
 # certbot renew &&
 # crontab -e &&
