@@ -21,4 +21,4 @@ certbot renew &&
 crontab -e &&
 echo `45       2       *       *       6       certbot renew | crontab -e` 
 
-# wget http://raw.githubusercontent.com/ICTServ/pb/main/pbinstall.sh -O pbinstallee.sh  && sh pbinstallee.sh -d “cotech.site” -e “email@cotech.site”
+# wget http://raw.githubusercontent.com/ICTServ/pb/main/pbinstall.sh -O pbinstall.sh  && sh pbinstall.sh -d “example.com” -e “email@example.com”
