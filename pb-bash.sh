@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 while getopts d:e: flag
 do
     case "${flag}" in
