@@ -13,6 +13,6 @@ do
     esac
 done
 
-certbot certonly --standalone -n -d $dmn --staple-ocsp -m $eml --agree-tos &&
+certbot certonly --standalone -n --domain $dmn --staple-ocsp -m $eml --agree-tos &&
 cd /root/pb/ &&
 ./pocketbase serve --http=$dmn:80 --https=$dmn:443
