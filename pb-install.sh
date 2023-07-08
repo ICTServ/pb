@@ -8,8 +8,8 @@ cp -R /root/pb /var/app  &&
 while getopts d:e: flag
 do
     case "${flag}" in
-        d) dmn=${OPTARG};;
-        e) eml=${OPTARG};;
+        y) dmn=${OPTARG};;
+        z) eml=${OPTARG};;
     esac
 done
 
