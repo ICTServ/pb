@@ -12,6 +12,6 @@ while getopts "d:e:" opt; do
   esac
 done
 
-certbot certonly --standalone -n --domain $domain --staple-ocsp -m $email --agree-tos &&
+certbot certonly --standalone -n -d $domain --staple-ocsp -m $email --agree-tos &&
 cd /root/pb/ &&
 ./pocketbase serve --https=$domain:443
