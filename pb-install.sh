@@ -5,12 +5,11 @@ unzip -o -qq  pb.zip -d pb  &&
 mkdir -p /var/app  &&
 cp -R /root/pb /var/app  &&
 
-while getopts d:e: flag
-do
-    case "${flag}" in
-        d) domain=${OPTARG};;
-        e) email=${OPTARG};;
-    esac
+while getopts "d:e:" opt; do
+  case $opt in
+    d) domain=$OPTARG ;;
+    e) email=$OPTARG ;;
+  esac
 done
 
 certbot certonly --standalone -n --domain $domain --staple-ocsp -m $email --agree-tos &&
