@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  pocketbase:
+    image: eservdoc/pb
+    ports:
+      - 8090:8090
+    volumes:
+      - pb:/usr/local/bin/pb_data
+volumes:
+  pb:
